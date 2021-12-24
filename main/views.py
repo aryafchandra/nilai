@@ -15,10 +15,6 @@ def home(request):
     if request.method == "POST":
         text = request.POST["detail"]
         
-    
-    if text == '':
-        pass
-    else:
         scr = 0
         x = text.split('\n')
         detail = []
@@ -57,7 +53,7 @@ def home(request):
             'finals':[scr],
             'butir':temp
         }
+        
+        return render(request, 'main/home.html', context)
+    return render(request, 'main/home.html')
     
-    
-    return render(request, 'main/home.html', context)
-
