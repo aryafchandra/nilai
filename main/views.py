@@ -41,17 +41,23 @@ def home(request):
             precont = ''
         
         for i in detail:
-            weight = i[-2][:-1]
+            try:
+                weight = i[-2][:-1]
+            except:
+                eror = 'yang bener'
             try:
                 float(weight)
                 scr += float(weight) / 100 * float(i[-1])
             except:
                 scr += 0
 
-        print(scr)
+        if scr > 100:
+            scr = 100
+            
         context = {
             'finals':[scr],
-            'butir':temp
+            'butir':temp,
+            'eror':[eror]
         }
         
         return render(request, 'main/home.html', context)
