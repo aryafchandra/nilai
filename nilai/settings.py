@@ -36,7 +36,7 @@ PRODUCTION = os.getenv('DATABASE_URL') is not None
 # SECURITY WARNING: don't run with debug turned on in production!
 # If you want to enable debugging on Heroku for learning purposes,
 # set this to True.
-DEBUG = not PRODUCTION
+DEBUG = True
 
 HEROKU_APP_NAME = os.getenv('HEROKU_APP_NAME', '')
 
@@ -105,9 +105,7 @@ DATABASES = {
 
 # Set database settings automatically using DATABASE_URL.
 if PRODUCTION:
-    DATABASES['default'] = dj_database_url.config(
-        conn_max_age=600, ssl_require=True
-    )
+    DATABASES['default'] = dj_database_url.config()
 
 
 # Password validation
