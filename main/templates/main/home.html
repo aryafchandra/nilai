@@ -6,6 +6,23 @@
 {% endblock meta %}
 
 {% block content %}
-  <h1>Hello, world!</h1>
-  <p><img src="{% static 'img/django-logo-negative.svg' %}"></p>
+<div style="text-align: center;">
+  <form action ="" method="POST">
+    {% csrf_token %}
+    <label for="nilai">copas nilai dari siak ya gais contoh Quiz1 100% 100.00</label>
+    <br>
+    <br>
+    <textarea rows = "5" cols = "60"name="detail" style="width: 500px;">
+    </textarea>
+    <button type="submit">SUBMIT</button>
+  </form>
+  {% for f in butir %}
+  <p>{{f}}</p>
+  {% endfor %}
+
+  {% for f in finals %}
+  <h1>{{f}}</h1>
+  {% endfor %}
+  
+</div>
 {% endblock content %}
