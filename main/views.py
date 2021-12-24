@@ -18,11 +18,12 @@ def home(request):
         scr = 0
         x = text.split('\n')
         detail = []
+        eror = ''
         
         for i in x:
             a = i.split()
             detail.append(a)
-        print(detail)
+        
         temp = []    
         precont = ''
         ctr = 0
@@ -45,15 +46,14 @@ def home(request):
                 weight = i[-2][:-1]
             except:
                 eror = 'yang bener'
-            try:
-                float(weight)
-                scr += float(weight) / 100 * float(i[-1])
-            except:
-                scr += 0
+            else:
+                try:
+                    float(weight)
+                    scr += float(weight) / 100 * float(i[-1])
+                except:
+                    scr += 0
 
-        if scr > 100:
-            scr = 100
-            
+        print(scr)
         context = {
             'finals':[scr],
             'butir':temp,
