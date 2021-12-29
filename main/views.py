@@ -22,7 +22,12 @@ def home(request):
         
         for i in x:
             a = i.split()
-            detail.append(a)
+            if a != '':
+                detail.append(a)
+        print(detail)
+        for i in detail:
+            if len(i) == 0:
+                detail.pop(detail.index(i))
         
         temp = []    
         precont = ''
@@ -30,7 +35,7 @@ def home(request):
         tmp1 = []
 
         for x in detail:
-            print(x)
+            
             for i in x:
                 if ctr == 0:
                     precont += f'{i}'
@@ -44,8 +49,9 @@ def home(request):
         for i in detail:
             try:
                 weight = i[-2][:-1]
+                
             except:
-                eror = 'yang bener'
+                eror = 'yang bener inputnya:D'
             else:
                 try:
                     float(weight)
@@ -57,7 +63,7 @@ def home(request):
         context = {
             'finals':[scr],
             'butir':temp,
-            'eror':[eror]
+            'eror':eror
         }
         
         return render(request, 'main/home.html', context)

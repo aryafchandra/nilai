@@ -7,21 +7,32 @@
 
 {% block content %}
 <div style="text-align: center;">
+  <p>copas nilai dari siak ya gais contoh:</p>
+  <p>Quiz1 50% 100.00</p>
+  <p>Quiz 2 50% 100.00</p>
   <form action ="" method="POST">
     {% csrf_token %}
-    <label for="nilai">copas nilai dari siak ya gais contoh Quiz1 100% 100.00</label>
+    
     <br>
     <br>
-    <textarea rows = "5" cols = "60"name="detail" style="width: 500px;"></textarea>
+    <textarea rows = "5" cols = "60"name="detail" style="width: 500px;"></textarea><br>
     <button type="submit">SUBMIT</button>
   </form>
-  {% for f in butir %}
-  <p>{{f}}</p>
-  {% endfor %}
+  {% if eror == '' %}
+    {% for f in butir %}
+    <p>{{f}}</p>
+    {% endfor %}
 
-  {% for f in finals %}
-  <h1>{{f}}</h1>
-  {% endfor %}
+    {% for f in finals %}
+    <h1>{{f}}</h1>
+    {% endfor %}
+  {% endif %}
+
+  {% if eror != '' %}
+  
+  <p>{{eror}}</p>
+  
+  {% endif %}
 
 </div>
 {% endblock content %}
